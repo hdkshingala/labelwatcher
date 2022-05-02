@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: labelwatcher
+  name: labelwatcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: labelwatcher
+  template:
+    metadata:
+      labels:
+        app: labelwatcher
+    spec:
+      serviceAccount: labelwatcher
+      containers:
+        - image: hardikinfracloud/labelwatcher:1.0.0
+          imagePullPolicy: Always
+          name: labelwatcher
+          args:
+            - --tls-cert-file=/labelwatcher/certs/tls.crt
+            - --tls-private-key-file=/labelwatcher/certs/tls.key
+            - --v=6
+          resources:
+            limits:
+              cpu: "1"
+              memory: "512Mi"
+          volumeMounts:
+            - mountPath: /labelwatcher/certs
+              name: cert
+      volumes:
+        - name: cert
+          secret:
+            secretName: labelwatcher-certs

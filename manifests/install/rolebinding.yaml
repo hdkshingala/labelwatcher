@@ -1,0 +1,12 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: labelwatcher
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: labelwatcher
+subjects:
+  - kind: ServiceAccount
+    name: labelwatcher
+    namespace: default

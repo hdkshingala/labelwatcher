@@ -1,0 +1,16 @@
+*.git/
+*.vscode/
+*manifests/
+
+*.test
+*.out
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+.dockerignore
+Dockerfile
+labelwatcher
