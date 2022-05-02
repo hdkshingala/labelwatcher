@@ -1,4 +1,4 @@
-# Snapshot Creator Kubernetes Operator
+# Label Watcher Kubernetes Operator
 
 A kubernetes operator which validates Pods which are being edited and checks if the label from the Pod is not edited that is also used in a NetworkPolicy as a selector.
 
